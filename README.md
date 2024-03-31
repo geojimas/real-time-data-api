@@ -7,18 +7,9 @@
 
 #### Project Setup
 
-##### Back-end
-
 ```
 cp.env.example .env
-pnpm install
-pnpm run dev
-```
-
-##### Front-end
-
-```
-cd client
-pnpm install
-pnpm run dev
+npm install && cd client && npm install
+cd .. && npm run build
+npm run start
 ```
