@@ -11,15 +11,19 @@ import helmet from 'koa-helmet'
 import logger from 'koa-logger'
 import { connectDB } from './src/database/dbConnection'
 import { generateBitcoinValues } from './src/services/bitcoinService'
+import { setEnvironmentURL, getEnvironments } from './src/utils/constants'
 
 dotenv.config()
 const corsConfig = { origin: 'https://real-time-data-api.onrender.com' }
-
+const environment =
+  process.env.SET_ENV === getEnvironments.development
+    ? setEnvironmentURL.development
+    : setEnvironmentURL.production
 const app = new Koa()
 const server = http.createServer(app.callback())
 const io = new SocketIOServer(server, {
   cors: {
-    origin: corsConfig.origin,
+    origin: environment,
     methods: ['GET', 'POST'],
   },
 })
@@ -57,7 +61,7 @@ io.on('connection', (socket: Socket) => {
 
 // Start the server
 server.listen(process.env.SERVER_PORT || 5173, () => {
-  console.log(`🚀 Server listening at ${process.env.URL}`)
+  console.log(`🚀 Server listening at ${environment}`)
 })
 
 // Error event listener for the server

@@ -18,6 +18,7 @@
 <script setup>
 import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import io from 'socket.io-client'
+import { setEnvironmentURL } from '../utils/constants'
 
 const price = ref(1)
 const targetPrice = ref(8)
@@ -26,7 +27,8 @@ const targetSellers = ref(1)
 let priceIntervalId = null
 let sellersIntervalId = null
 
-const socket = io('https://real-time-data-api.onrender.com')
+const environment = setEnvironmentURL.production
+const socket = io(environment)
 
 const numberStepper = (number, numberTarget, isPrice) => {
   const step = number < numberTarget ? 1 : -1

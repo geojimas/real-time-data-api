@@ -7,7 +7,9 @@ export const connectDB = async () => {
         mongoose.connection.on('open', () => console.log('opening..'))
         const conn = await mongoose.connect(URI, {})
         console.log('MongoDB connected Successfully!')
-        console.log(`Host: ${conn.connection.host}`)
+        console.log(`HOST: ${conn.connection.host}`)
+        console.log(`NAME: ${conn.connection.name}`)
+        console.log(`PORT: ${conn.connection.port}`)
     } catch (error) {
         console.log(error)
         throw new Error('Unable to connect to the database')
