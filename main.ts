@@ -13,7 +13,7 @@ import { connectDB } from './src/database/dbConnection'
 import { generateBitcoinValues } from './src/services/bitcoinService'
 
 dotenv.config()
-const corsConfig = { origin: 'http://localhost:5173' }
+const corsConfig = { origin: 'https://real-time-data-api.onrender.com' }
 
 const app = new Koa()
 const server = http.createServer(app.callback())

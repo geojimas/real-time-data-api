@@ -26,7 +26,7 @@ const targetSellers = ref(1)
 let priceIntervalId = null
 let sellersIntervalId = null
 
-const socket = io('http://localhost:5173')
+const socket = io('https://real-time-data-api.onrender.com')
 
 const numberStepper = (number, numberTarget, isPrice) => {
   const step = number < numberTarget ? 1 : -1
