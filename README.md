@@ -9,7 +9,7 @@
 
 ```
 cp.env.example .env
-npm install && cd client && npm install
-cd .. && npm run build
+cd client && npm install && cd .. && npm install
+npm run build
 npm run start
 ```
